@@ -92,11 +92,9 @@ imv.mirt(mod1) #compared to item-level means
 As we'd expect, the 1PL/Rasch predictions that vary between-people for the same item are quite valuable relative to those that only vary between items. 
 
 ### Comparing 2PL and 1PL predictions
-Let's now turn to a second example using data from the [IRW](https://datapages.github.io/irw/). Here we'll compare predictions from the 1PL to those from the 2PL (after imposing weak priors on the discrimination parameters for the 2PL).
+Let's now turn to a second example using data from the [IRW](https://itemresponsewarehouse.org/). Here we'll compare predictions from the 1PL to those from the 2PL (after imposing weak priors on the discrimination parameters for the 2PL).
 ```
-library(irw) #see: https://datapages.github.io/irw/
-dataset <- redivis::user("datapages")$dataset("item_response_warehouse")
-df <- dataset$table("kim2023")$to_data_frame()
+df<-irw::irw_filter("gilbert_meta_1")
 items<-unique(df$item)
 if (all(items %in% 1:length(items))) {
     df$item<-paste("item_",df$item,sep='')
